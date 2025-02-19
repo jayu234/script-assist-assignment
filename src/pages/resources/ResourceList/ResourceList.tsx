@@ -32,12 +32,12 @@ const Resources: FC = () => {
     return [...data.results].sort((a, b) => {
       const aValue = a[sortState.column];
       const bValue = b[sortState.column];
-      const modifier = sortState.direction === 'asc' ? 1 : -1;
+      const modifier = sortState?.direction === 'asc' ? 1 : -1;
 
       if (!isNaN(aValue)) {
         return (parseFloat(aValue) - parseFloat(bValue)) * modifier;
       }
-      return aValue.localeCompare(bValue) * modifier;
+      return aValue?.localeCompare(bValue) * modifier;
     });
   }, [data?.results, sortState]);
 
